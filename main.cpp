@@ -9,6 +9,8 @@
 
 #include "pratikum/praktek1.cpp"
 #include "pratikum/praktek2.cpp"
+#include "pratikum/praktek3.cpp"
+#include "pratikum/praktek4.cpp"
 
 #include "program/basic_math/basic.cpp"
 #include "program/calculator/calculator.cpp"
@@ -20,9 +22,40 @@
 // using namespace std; | Digunakan untuk mendeklarasikan bahwa program yang sedang berjalan merupakan standart / tidak perlu di panggil kembali penggunaan std:: <- ini
 using namespace std;
 
+void login() {
+    string username, password;
+    const string d_username = "kitsu", d_password = "kitsuc123";
+
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+
+    do {
+        cout << "       Welcome to Kitsu C       " << endl << "================================" << endl;
+        
+        cout << "Username: ";
+        cin >> username;
+    
+        cout << "Password: ";
+        cin >> password;
+
+        #ifdef _WIN32
+            system("cls");
+        #else
+            system("clear");
+        #endif
+    } while (username != d_username || password != d_password);
+
+    cout << "Successfully logged in as " << d_username << endl;
+}
+
 int main() {
     int program;
     char repeat;
+
+    login();
 
     do {
         string p_list =
@@ -34,6 +67,9 @@ int main() {
             "> [5] Temperature Converter\n"
             "> [101] Praktek 1\n"
             "> [102] Praktek 2\n"
+            "> [103] Praktek 3\n"
+            "> [104] Praktek 4\n"
+            "> [0] Logout\n"
             "==================================================\n";
 
         cout << p_list << endl << "[?] Please select a program to run: ";
@@ -60,6 +96,15 @@ int main() {
                 break;
             case 102:
                 praktek2();
+                break;
+            case 103:
+                praktek3();
+                break;
+            case 104:
+                praktek4();
+                break;
+            case 0:
+                login();
                 break;
             default:
                 cout << "[!] Invalid selection. Please choose a valid program.\n";
